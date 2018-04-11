@@ -1,0 +1,12 @@
+sudo -s
+git clone https://github.com/RehabMan/Lenovo-Y50-DSDT-Patch y50.git
+cd y50.git
+./download.sh
+./install_downloads.sh
+make
+make install
+pmset -a hibernatemode 0
+rm /var/vm/sleepimage
+mkdir /var/vm/sleepimage
+cp config.plist /Volumes/EFI/EFI/CLOVER/config.plist
+sudo touch /System/Library/Extensions && sudo kextcache -u /
